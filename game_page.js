@@ -33,9 +33,41 @@ Answer="<span id='sp'><h4>Answer : </h4></span>&nbsp;&nbsp;&nbsp;<input id='ip' 
 Check="<button id='bt' onclick='check()'>Check</button>";
 row=Question+Answer+Check;
 document.getElementById("output").innerHTML=row;
-document.getElementById("ansme").innerHTML=" ";
+document.getElementById("ansme").value=" ";
 }
 
+Question_Turn="player1";
+Answer_Turn="player2";
 function check(){
+ot=document.getElementById("ip").value;
+d=ot.toLowerCase();
+if(d==w1)
+{
+if(Answer_Turn=="player1"){
+player1_score=player1_score+1;
+document.getElementById("pl1_score").innerHTML=player1_score;
+}
+else{
+player2_score=player2_score+1;
+document.getElementById("pl2_score").innerHTML=player2_score;
+}
+}
+if(Question_Turn=="player1"){
+Question_Turn="player2";
+document.getElementById("que").innerHTML="Question Turn - "+player2_name;
+}
+else if(Question_Turn=="player2"){
+Question_Turn="player1";
+document.getElementById("que").innerHTML="Question Turn - "+player1_name;
+}
 
+if(Answer_Turn=="player1"){
+Answer_Turn="player2";
+document.getElementById("ans").innerHTML="Answer Turn - "+player2_name;
+}
+else if(Answer_Turn=="player2"){
+Answer_Turn="player1";
+document.getElementById("ans").innerHTML="Answer Turn - "+player1_name;
+}
+document.getElementById("output").innerHTML="";
 }
